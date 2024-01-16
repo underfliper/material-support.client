@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
+import Header from '@/components/Layout/Header/Header'
 
 import './globals.scss'
 
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
+        <Header />
         <main>{children}</main>
       </body>
     </html>
