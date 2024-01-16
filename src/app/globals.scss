@@ -1,7 +1,23 @@
+@import '@/assets/mixins';
+@import '@/assets/variables';
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+main {
+  @include respond-to(lg) {
+    flex: 1 1 auto;
+  }
 }
 
 a {
@@ -18,4 +34,23 @@ button {
 
 input:focus {
   box-shadow: none !important;
+}
+
+h1,
+h2,
+h3 {
+  color: map-get($colors, primary);
+  font-weight: 400;
+}
+
+h1 {
+  @include adaptive-font(38, 28);
+}
+
+h2 {
+  @include adaptive-font(30, 24);
+}
+
+h3 {
+  @include adaptive-font(20, 18);
 }
