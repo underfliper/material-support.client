@@ -14,8 +14,8 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 
     @include respond-to(sm) {
       flex-direction: row;

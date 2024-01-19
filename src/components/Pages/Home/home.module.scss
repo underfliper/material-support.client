@@ -1,0 +1,107 @@
+@import '@/assets/variables';
+@import '@/assets/mixins';
+
+.home {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    margin-bottom: 45px;
+    color: map-get($map: $colors, $key: text);
+  }
+
+  .content {
+    display: flex;
+  }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    @include respond-to(sm) {
+      // justify-content: space-between;
+      gap: 55px;
+    }
+
+    .information-login {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .login-link {
+      display: flex;
+      padding: 15px 40px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      background: map-get($map: $colors, $key: primary);
+      color: #ffffff;
+
+      @include respond-to(sm) {
+        padding: 10px 40px;
+        width: max-content;
+      }
+    }
+
+    .useful-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      ul {
+        list-style: none;
+
+        li {
+          margin-top: 5px;
+          margin-bottom: 5px;
+          color: map-get($map: $colors, $key: primary);
+
+          a {
+            display: flex;
+
+            &:hover {
+              text-decoration: underline;
+
+              span {
+                color: map-get($map: $colors, $key: primary);
+              }
+            }
+
+            span {
+              color: map-get($map: $colors, $key: text);
+            }
+          }
+        }
+      }
+    }
+
+    @include respond-to(sm) {
+      width: 70%;
+    }
+
+    @include respond-to(lg) {
+      width: 30%;
+    }
+  }
+
+  .image {
+    display: none;
+
+    img {
+      width: max-content;
+      height: 460px;
+
+      @include respond-to(xl) {
+        height: 520px;
+      }
+    }
+
+    @include respond-to(lg) {
+      display: flex;
+      justify-content: flex-end;
+      width: 70%;
+    }
+  }
+}
