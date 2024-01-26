@@ -1,0 +1,125 @@
+@import '@/assets/variables';
+
+$padding: 10px;
+$height: 52px;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid map-get($map: $colors, $key: accent);
+  border-radius: 10px;
+  background: map-get($map: $colors, $key: background);
+
+  &:focus-within {
+    border: 1px solid map-get($map: $colors, $key: primary);
+  }
+
+  &.error {
+    border: 1px solid red;
+  }
+}
+
+.input {
+  all: unset;
+  width: 100%;
+  height: $height;
+  padding-left: $padding;
+  text-align: left;
+  border-radius: 10px;
+  transition: 0.15s cubic-bezier(0.04, 0, 0.2, 1);
+
+  &:focus + .label,
+  &:-webkit-autofill + .label {
+    top: -2px;
+    transform: scale(0.88) translateX(calc(-1 * $padding)) translateY(-50%);
+    background-color: map-get($map: $colors, $key: background);
+    padding-inline: 2px;
+    color: map-get($map: $colors, $key: primary);
+  }
+
+  &:-webkit-autofill + .label {
+    transition: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill.focus,
+  &:-webkit-autofill:active,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:hover {
+    -webkit-box-shadow: 0 0 0 30px map-get($map: $colors, $key: background)
+      inset !important;
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  &:-moz-autofill,
+  &:-moz-autofill.focus,
+  &:-moz-autofill:active,
+  &:-moz-autofill:focus,
+  &:-moz-autofill:hover {
+    -moz-box-shadow: 0 0 0 30px map-get($map: $colors, $key: background) inset !important;
+    -moz-transition: none;
+    transition: none;
+  }
+}
+
+.label {
+  position: absolute;
+  top: calc($height / 2);
+  left: $padding;
+  transform: translateY(-50%);
+  color: map-get($map: $colors, $key: text-light);
+  font-weight: 500;
+  pointer-events: none;
+  transition: transform 0.15s cubic-bezier(0.04, 0, 0.2, 1),
+    top 0.15s cubic-bezier(0.04, 0, 0.2, 1);
+
+  &.notEmpty {
+    top: -2px;
+    transform: scale(0.88) translateX(calc(-1 * $padding)) translateY(-50%);
+    background-color: map-get($map: $colors, $key: background);
+    padding-inline: 2px;
+    color: map-get($map: $colors, $key: primary);
+  }
+}
+
+.showPassword {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 45px;
+  padding-block: 10px;
+  padding-inline: 10px;
+  background: none;
+  color: map-get($map: $colors, $key: text-light);
+  border: none;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.error {
+  border-color: red;
+
+  .input:focus + .label {
+    color: red;
+  }
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: red;
+}
