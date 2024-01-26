@@ -16,9 +16,12 @@ body {
 
 main {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
   padding-top: 45px;
   padding-bottom: 45px;
-  flex: 1 1 auto;
 
   &::before {
     content: ' ';
@@ -89,4 +92,9 @@ h2 {
 
 h3 {
   @include adaptive-font(20, 18);
+}
+
+.pageLoader {
+  width: 100px;
+  height: 100px;
 }

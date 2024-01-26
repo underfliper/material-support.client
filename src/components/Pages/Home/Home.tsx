@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/Container/Container'
+import Button from '@/components/ui/Button/Button'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import background from '@/assets/img/apply_background.svg'
 
@@ -20,9 +21,9 @@ const Home = () => {
               Для того чтобы пользоваться данной системой, Вам необходимо войти
               в свой личный кабинет.
             </p>
-            <Link className={styles['login-link']} href="/">
+            <Button as={Link} href="/auth/signin">
               Войти
-            </Link>
+            </Button>
           </div>
           <div className={styles['useful-links']}>
             <h2>Полезные ссылки</h2>

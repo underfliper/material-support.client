@@ -4,6 +4,9 @@ import { $fetch } from '../fetch/customFetch'
 import { AuthenticatedUser } from '@/types/auth.types'
 
 export const nextAuthOptions: NextAuthOptions = {
+  pages: {
+    signIn: '/auth/signin',
+  },
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -12,7 +15,10 @@ export const nextAuthOptions: NextAuthOptions = {
         password: { label: 'Пароль', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials.password) return null
+        if (!credentials?.username || !credentials?.password)
+          return Promise.reject({
+            message: 'Все поля должны быть заполнены',
+          })
 
         try {
           const { data: user } = await $fetch.post<AuthenticatedUser>(

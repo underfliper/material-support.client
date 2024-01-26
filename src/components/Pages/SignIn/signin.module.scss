@@ -1,0 +1,23 @@
+@import '@/assets/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-inline: 15px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.button {
+  width: 100%;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: red;
+}
