@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
+import Container from '@/components/Container/Container'
 import Field from '@/components/ui/Field/Field'
 import Button from '@/components/ui/Button/Button'
 import { MdErrorOutline } from 'react-icons/md'
@@ -49,35 +50,37 @@ const SignIn = (props: SignInProps) => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <h1>Войти в личный кабинет</h1>
-      <Field
-        label="Имя пользователя"
-        {...register('username')}
-        error={errors.username?.message}
-        autoComplete="username"
-      />
-      <Field
-        label="Пароль"
-        type="password"
-        {...register('password')}
-        error={errors.password?.message}
-        autoComplete="current-password"
-      />
-      {error && !isSubmitting && (
-        <span className={styles.error}>
-          <MdErrorOutline />
-          {error}
-        </span>
-      )}
-      <Button
-        className={styles.button}
-        disabled={isSubmitting}
-        isLoading={isSubmitting}
-        type="submit">
-        Войти
-      </Button>
-    </form>
+    <Container className={styles.wrapper}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <h1>Войти в личный кабинет</h1>
+        <Field
+          label="Имя пользователя"
+          {...register('username')}
+          error={errors.username?.message}
+          autoComplete="username"
+        />
+        <Field
+          label="Пароль"
+          type="password"
+          {...register('password')}
+          error={errors.password?.message}
+          autoComplete="current-password"
+        />
+        {error && !isSubmitting && (
+          <span className={styles.error}>
+            <MdErrorOutline />
+            {error}
+          </span>
+        )}
+        <Button
+          className={styles.button}
+          disabled={isSubmitting}
+          isLoading={isSubmitting}
+          type="submit">
+          Войти
+        </Button>
+      </form>
+    </Container>
   )
 }
 
