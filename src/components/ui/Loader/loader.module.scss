@@ -1,8 +1,15 @@
 @import '@/assets/variables';
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: map-get($map: $colors, $key: primary);
+}
+
 .loader {
   animation: 1s spin infinite;
-  color: map-get($map: $colors, $key: primary);
+  color: inherit;
 }
 
 @keyframes spin {
