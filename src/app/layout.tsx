@@ -3,7 +3,9 @@ import type { Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
 import Header from '@/components/Layout/Header/Header'
 import Footer from '@/components/Layout/Footer/Footer'
+import { ToastContainer } from 'react-toastify'
 
+import 'react-toastify/dist/ReactToastify.css'
 import './globals.scss'
 
 const montserrat = Montserrat({
@@ -55,7 +57,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <Header />
-        <main>{children}</main>
+        <main>
+          {children}
+          <ToastContainer theme="colored" />
+        </main>
         <Footer />
       </body>
     </html>

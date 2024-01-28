@@ -9,6 +9,7 @@ import Container from '@/components/Container/Container'
 import Field from '@/components/ui/Field/Field'
 import Button from '@/components/ui/Button/Button'
 import { MdErrorOutline } from 'react-icons/md'
+import { toast } from 'react-toastify'
 
 import styles from './signin.module.scss'
 
@@ -46,6 +47,7 @@ const SignIn = (props: SignInProps) => {
       return
     }
 
+    toast.success('Добро пожаловать!')
     router.push(props.callbackUrl ? props.callbackUrl : '/')
   }
 
