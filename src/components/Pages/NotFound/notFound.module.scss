@@ -1,0 +1,6 @@
+@import '@/assets/variables';
+
+.title {
+  margin-bottom: 45px;
+  color: map-get($map: $colors, $key: text);
+}
