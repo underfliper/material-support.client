@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
+import Providers from '@/components/Providers/Providers'
 import Header from '@/components/Layout/Header/Header'
 import Footer from '@/components/Layout/Footer/Footer'
 import { ToastContainer } from 'react-toastify'
@@ -56,12 +57,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <Header />
-        <main>
-          {children}
-          <ToastContainer theme="colored" />
-        </main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main>
+            {children}
+            <ToastContainer theme="colored" />
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
