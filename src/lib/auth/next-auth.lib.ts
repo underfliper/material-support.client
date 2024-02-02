@@ -1,11 +1,12 @@
-import { NextAuthOptions, User } from 'next-auth'
+import type { NextAuthOptions, User } from 'next-auth'
+import type { AuthenticatedUser } from '@/types/auth.types'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { $fetch } from '../fetch/customFetch'
-import { AuthenticatedUser } from '@/types/auth.types'
 
 export const nextAuthOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin',
+    signOut: '/auth/signout',
   },
   providers: [
     CredentialsProvider({
