@@ -9,26 +9,43 @@
   width: max-content;
   border: none;
   border-radius: 10px;
-  background: map-get($map: $colors, $key: primary);
-  color: map-get($map: $colors, $key: button-text);
   font-weight: 500;
   cursor: pointer;
   transition: background 0.15s cubic-bezier(0.04, 0, 0.2, 1);
 
+  .loader {
+    color: map-get($map: $colors, $key: text-light);
+  }
+}
+
+.primary {
+  background: map-get($map: $colors, $key: primary);
+  color: map-get($map: $colors, $key: button-text);
+
   &:hover {
-    box-shadow: 0 0 1px 1px map-get($map: $colors, $key: primary);
+    box-shadow: inset 0 0 1px 1px map-get($map: $colors, $key: primary);
     background: none;
     color: map-get($map: $colors, $key: primary);
   }
+}
 
+.light {
+  background: none;
+  box-shadow: inset 0 0 1px 1px map-get($map: $colors, $key: primary);
+  color: map-get($map: $colors, $key: primary);
+
+  &:hover {
+    background: map-get($map: $colors, $key: primary);
+    color: map-get($map: $colors, $key: button-text);
+  }
+}
+
+.primary,
+.light {
   &:disabled {
     cursor: default;
     box-shadow: none;
     background: map-get($map: $colors, $key: accent);
-    color: map-get($map: $colors, $key: text-light);
-  }
-
-  .loader {
     color: map-get($map: $colors, $key: text-light);
   }
 }

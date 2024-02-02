@@ -10,6 +10,7 @@ import styles from './button.module.scss'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string | UrlObject
   as?: ComponentType<LinkProps>
+  variant?: 'primary' | 'light'
   isLoading?: boolean
 }
 
@@ -18,6 +19,7 @@ const Button: FC<ButtonProps> = ({
   children,
   as,
   href,
+  variant = 'primary',
   isLoading = false,
   ...props
 }) => {
@@ -27,14 +29,16 @@ const Button: FC<ButtonProps> = ({
     }
 
     return (
-      <Link className={cn(className, styles.link)} href={href}>
+      <Link className={cn(className, styles.link, styles[variant])} href={href}>
         {children}
       </Link>
     )
   }
 
   return (
-    <button className={cn(className, styles.button)} {...props}>
+    <button
+      className={cn(className, styles.button, styles[variant])}
+      {...props}>
       {isLoading ? (
         <>
           Загрузка <Loader className={styles.loader} />
