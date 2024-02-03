@@ -6,7 +6,7 @@ import Header from '@/components/Layout/Header/Header'
 import Footer from '@/components/Layout/Footer/Footer'
 import { ToastContainer } from 'react-toastify'
 
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/scss/main.scss'
 import './globals.scss'
 
 const montserrat = Montserrat({

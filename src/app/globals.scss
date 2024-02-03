@@ -81,11 +81,11 @@ h3 {
 }
 
 h1 {
-  @include adaptive-font(38, 28);
+  @include adaptive-font(36, 30);
 }
 
 h2 {
-  @include adaptive-font(30, 24);
+  @include adaptive-font(26, 22);
 }
 
 h3 {

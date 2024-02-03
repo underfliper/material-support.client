@@ -1,0 +1,25 @@
+@import '@/assets/variables';
+@import '@/assets/mixins';
+
+.wrapper {
+  p {
+    margin-top: 20px;
+  }
+
+  ol,
+  ul {
+    padding-inline-start: 40px;
+
+    li {
+      margin-top: 10px;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 25px;
+}
+
+.subtitle {
+  margin-block: 20px;
+}
