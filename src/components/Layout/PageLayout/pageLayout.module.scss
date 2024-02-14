@@ -1,0 +1,52 @@
+@import '@/assets/variables';
+@import '@/assets/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .title {
+    margin-bottom: 25px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 25px;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      gap: 0px;
+      background-color: map-get($map: $colors, $key: background);
+      border: 1px solid map-get($map: $colors, $key: accent);
+      border-radius: 10px;
+    }
+
+    .sidebar {
+      @include respond-to(md) {
+        width: 33%;
+        padding-block: 15px;
+      }
+
+      @include respond-to(lg) {
+        width: 26%;
+      }
+
+      @include respond-to(xl) {
+        width: 20%;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      @include respond-to(md) {
+        padding: 15px;
+        flex: 1;
+      }
+    }
+  }
+}
