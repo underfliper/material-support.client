@@ -3,6 +3,73 @@
 
 .nav {
   position: relative;
+
+  .list {
+    position: fixed;
+    z-index: 999;
+    top: 80px;
+    right: -100%;
+    gap: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($map: $colors, $key: background);
+    box-shadow: inset 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s;
+
+    @include respond-to(lg) {
+      position: static;
+      flex-direction: row;
+      gap: 20px;
+      width: auto;
+      height: auto;
+      box-shadow: none;
+    }
+  }
+
+  .item {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    font-weight: 500;
+
+    &:last-child > a {
+      & > .separator {
+        display: none;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:global.active {
+      color: map-get($map: $colors, $key: primary);
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    @include respond-to(lg) {
+      width: auto;
+      height: auto;
+      color: map-get($map: $colors, $key: primary);
+
+      &:global.active {
+        color: map-get($map: $colors, $key: primary);
+
+        a {
+          text-decoration: underline;
+          text-decoration-thickness: 2px;
+          text-underline-offset: 5px;
+        }
+      }
+    }
+  }
 }
 
 .active {
@@ -22,73 +89,6 @@
     &::after {
       top: 0;
       transform: rotate(90deg);
-    }
-  }
-}
-
-.list {
-  position: fixed;
-  z-index: 999;
-  top: 80px;
-  right: -100%;
-  gap: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: map-get($map: $colors, $key: background);
-  box-shadow: inset 0px 4px 12px rgba(0, 0, 0, 0.1);
-  transition: right 0.4s;
-
-  @include respond-to(lg) {
-    position: static;
-    flex-direction: row;
-    gap: 20px;
-    width: auto;
-    height: auto;
-    box-shadow: none;
-  }
-}
-
-.item {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  font-weight: 500;
-
-  &:last-child > a {
-    & > .separator {
-      display: none;
-    }
-  }
-
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  &:global.active {
-    color: map-get($map: $colors, $key: primary);
-
-    a {
-      text-decoration: none;
-    }
-  }
-
-  @include respond-to(lg) {
-    width: auto;
-    height: auto;
-    color: map-get($map: $colors, $key: primary);
-
-    &:global.active {
-      color: map-get($map: $colors, $key: primary);
-
-      a {
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 5px;
-      }
     }
   }
 }
