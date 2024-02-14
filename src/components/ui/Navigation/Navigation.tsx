@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren, ReactNode } from 'react'
+import { forwardRef, type PropsWithChildren, type ReactNode } from 'react'
 import cn from 'classnames'
 import NavigationItem from './NavigationItem/NavigationItem'
 
@@ -11,20 +11,16 @@ interface NavigationProps extends PropsWithChildren {
   listClassName?: string
 }
 
-const Navigation: FC<NavigationProps> = ({
-  className,
-  listClassName,
-  startContent,
-  endContent,
-  children,
-}) => {
-  return (
-    <nav className={cn(className, styles.wrapper)}>
-      {startContent}
-      <ul className={cn(listClassName, styles.list)}>{children}</ul>
-      {endContent}
-    </nav>
-  )
-}
+const Navigation = forwardRef<HTMLElement, NavigationProps>(
+  ({ className, listClassName, startContent, endContent, children }, ref) => {
+    return (
+      <nav className={cn(className, styles.wrapper)} ref={ref}>
+        {startContent}
+        <ul className={cn(listClassName, styles.list)}>{children}</ul>
+        {endContent}
+      </nav>
+    )
+  },
+)
 
 export default Object.assign(Navigation, { Item: NavigationItem })
