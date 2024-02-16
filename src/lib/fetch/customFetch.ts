@@ -1,19 +1,6 @@
 import { getServerSession } from 'next-auth'
 import { nextAuthOptions } from '../auth/next-auth.lib'
-
-interface ApiResponse<T> {
-  data: T
-  status: number
-}
-
-class ApiError extends Error {
-  statusCode: number
-
-  constructor(message: string | undefined, statusCode: number) {
-    super(message)
-    this.statusCode = statusCode
-  }
-}
+import { ApiError, type ApiResponse } from '@/types/api.types'
 
 class CustomFetch {
   private API_URL = process.env.API_URL as string
