@@ -30,5 +30,28 @@
         width: calc(50% - 7.5px);
       }
     }
+
+    &_controls {
+      display: flex;
+      gap: 15px;
+
+      button {
+        width: calc(50% - 7.5px);
+      }
+
+      @include respond-to(lg) {
+        margin-left: auto;
+      }
+    }
+
+    &_tooltip {
+      display: flex;
+      gap: 5px;
+      color: red;
+
+      svg {
+        flex: 0 0 auto;
+      }
+    }
   }
 }

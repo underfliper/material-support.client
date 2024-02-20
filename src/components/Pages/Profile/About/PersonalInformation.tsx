@@ -2,18 +2,30 @@
 import type { FC } from 'react'
 import type { StudentPersonalInfo } from '@/types/student.types'
 import { getBeautifulDate } from '@/utils/date.util'
+import { MdErrorOutline } from 'react-icons/md'
 import Field from '@/components/ui/Field/Field'
 
 import styles from './profileAbout.module.scss'
 
 interface PersonalInformationProps {
   data: StudentPersonalInfo
+  editMode?: boolean
 }
 
-const PersonalInformation: FC<PersonalInformationProps> = ({ data }) => {
+const PersonalInformation: FC<PersonalInformationProps> = ({
+  data,
+  editMode,
+}) => {
   return (
     <div className={styles.personalInformation}>
       <h2>Личная информация</h2>
+      {editMode && (
+        <span className={styles.personalInformation_tooltip}>
+          <MdErrorOutline size={20} />
+          Внимание! Для изменения личной информации необходимо обратиться в
+          техническую поддержку.
+        </span>
+      )}
       <div className={styles.personalInformation_fields}>
         <Field
           className={styles.personalInformation_field}
