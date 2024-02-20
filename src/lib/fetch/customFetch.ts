@@ -3,9 +3,23 @@ import { nextAuthOptions } from '../auth/next-auth.lib'
 import { ApiError, type ApiResponse } from '@/types/api.types'
 
 class CustomFetch {
-  private API_URL = process.env.API_URL as string
+  private API_URL = process.env.NEXT_PUBLIC_API_URL as string
 
   constructor(private defaultHeaders: HeadersInit = {}) {}
+
+  async getAccessToken(): Promise<string | null> {
+    const session = await getServerSession(nextAuthOptions).catch(() => {
+      return null
+    })
+
+    if (!session) {
+      if (!localStorage) return null
+
+      return localStorage.getItem('accessToken')
+    }
+
+    return session?.user?.accessToken ?? null
+  }
 
   private async request<T>(
     path: string,
@@ -13,10 +27,9 @@ class CustomFetch {
     options?: RequestInit,
   ): Promise<ApiResponse<T>> {
     const url = `${this.API_URL}${path}`
-    const session = await getServerSession(nextAuthOptions)
 
     const authorizationHeader: HeadersInit = isAuth
-      ? { Authorization: `Bearer ${session?.user?.accessToken}` }
+      ? { Authorization: `Bearer ${await this.getAccessToken()}` }
       : {}
 
     try {

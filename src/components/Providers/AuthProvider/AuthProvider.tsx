@@ -27,9 +27,12 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
     if (checkTokenExpire(user.accessToken)) {
       signOut({ redirect: false })
+      localStorage.removeItem('accessToken')
       toast.info('Истекло время сессии. Войдите в аккаунт чтобы продолжить.')
       router.push('/auth/signin')
     }
+
+    localStorage.setItem('accessToken', user.accessToken)
 
     if (pathname === '/') {
       if (user.role === UserRole.Student) router.push('/profile')
