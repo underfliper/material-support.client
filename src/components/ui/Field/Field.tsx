@@ -11,11 +11,9 @@ interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Field = forwardRef<HTMLInputElement, FieldProps>(
-  ({ name, label, type, className, error, onChange, ...props }, ref) => {
+  ({ name, label, type, className, error, disabled, ...props }, ref) => {
     const [visiblePassword, setVisiblePassword] = useState(false)
-    const [isEmpty, setIsEmpty] = useState<boolean>(
-      props.value || props.defaultValue ? false : true,
-    )
+    const notEmptyDisabled = disabled && (!!props.value || !!props.defaultValue)
 
     return (
       <div className={cn(className, styles.wrapper)}>
@@ -26,14 +24,13 @@ const Field = forwardRef<HTMLInputElement, FieldProps>(
             name={name}
             type={visiblePassword ? 'text' : type}
             ref={ref}
-            onChange={(e) => {
-              setIsEmpty(e.target.value === '')
-              onChange && onChange(e)
-            }}
+            disabled={disabled}
             {...props}
           />
           <label
-            className={cn(styles.label, !isEmpty && styles.notEmpty)}
+            className={cn(styles.label, {
+              [styles.notEmpty]: notEmptyDisabled,
+            })}
             htmlFor={name}>
             {label}
           </label>

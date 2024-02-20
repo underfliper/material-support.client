@@ -60,6 +60,7 @@ const SignIn = (props: SignInProps) => {
           {...register('username')}
           error={errors.username?.message}
           autoComplete="username"
+          required
         />
         <Field
           label="Пароль"
@@ -67,6 +68,7 @@ const SignIn = (props: SignInProps) => {
           {...register('password')}
           error={errors.password?.message}
           autoComplete="current-password"
+          required
         />
         {error && !isSubmitting && (
           <span className={styles.error}>

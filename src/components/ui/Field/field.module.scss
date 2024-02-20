@@ -36,13 +36,16 @@ $height: 52px;
   border-radius: 10px;
   transition: 0.15s cubic-bezier(0.04, 0, 0.2, 1);
 
-  &:focus + .label,
-  &:-webkit-autofill + .label {
+  &:is(:focus, :valid, :-webkit-autofill) ~ .label {
     top: -2px;
     transform: scale(0.88) translateX(calc(-1 * $padding)) translateY(-50%);
     background-color: map-get($map: $colors, $key: background);
     padding-inline: 2px;
     color: map-get($map: $colors, $key: primary);
+  }
+
+  &:disabled {
+    color: map-get($map: $colors, $key: text-light);
   }
 
   &:-webkit-autofill + .label {
